@@ -1,6 +1,7 @@
-import { useState } from 'react';
+import { useDispatch } from 'react-redux';
 
 const Rate = ({ rating, setRating }) => {
+  const dispatch = useDispatch();
   const showStars = numberOfStars => {
     const starsArray = [];
     for (let i = 1; i <= 5; i++) {
@@ -11,7 +12,7 @@ const Rate = ({ rating, setRating }) => {
             className="fs-4"
             key={i}
             onClick={() => {
-              setRating(i);
+              setRating() && dispatch(setRating(i));
             }}
           >
             {' '}
@@ -25,7 +26,7 @@ const Rate = ({ rating, setRating }) => {
             className="fs-4"
             key={i}
             onClick={() => {
-              setRating(i);
+              setRating() && dispatch(setRating(i));
             }}
           >
             {' '}

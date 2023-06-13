@@ -1,6 +1,8 @@
 import { useState } from 'react';
+import { addNewMovie } from '../../redux/actions/movieActions';
+import { useDispatch } from 'react-redux';
 
-const AddMovie = ({ addNewMovie }) => {
+const AddMovie = () => {
   const [movie, setMovie] = useState({
     title: '',
     date: '',
@@ -11,6 +13,8 @@ const AddMovie = ({ addNewMovie }) => {
     rating: '',
   });
 
+  const dispatch = useDispatch();
+
   const { title, date, genre, description, posterURL, trailer, rating } = movie;
 
   const onChange = e => setMovie({ ...movie, [e.target.name]: e.target.value });
@@ -18,7 +22,7 @@ const AddMovie = ({ addNewMovie }) => {
   const onFormSubmit = e => {
     e.preventDefault();
     const newMovie = { ...movie, rating: Number(rating), id: Date.now() };
-    addNewMovie(newMovie);
+    dispatch(addNewMovie(newMovie));
   };
 
   return (

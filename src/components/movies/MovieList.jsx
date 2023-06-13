@@ -1,7 +1,17 @@
 import React from 'react';
 import MovieCard from './MovieCard';
 
-const MovieList = ({ movieList, rating, title }) => {
+import { useSelector } from 'react-redux';
+
+const MovieList = () => {
+  // const movieList = useSelector(state => state.moviesReducer.movieList);
+  // const title = useSelector(state => state.moviesReducer.title);
+  // const rating = useSelector(state => state.moviesReducer.rating);
+
+  const { movieList, title, rating } = useSelector(
+    state => state.moviesReducer
+  );
+
   const filteredMovieList = movieList.filter(
     movie =>
       movie.rating >= rating &&
